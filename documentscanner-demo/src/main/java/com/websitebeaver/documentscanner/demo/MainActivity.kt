@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.websitebeaver.documentscanner.DocumentScanner
+import com.websitebeaver.documentscanner.constants.ResponseType
 import com.websitebeaver.documentscanner.utils.ImageUtil
 
 /**
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         {
             // user canceled document scan
             Log.v("documentscannerlogs", "User canceled document scan")
-        }
+        }, ResponseType.IMAGE_FILE_PATH, true,2, 2
     )
 
     /**

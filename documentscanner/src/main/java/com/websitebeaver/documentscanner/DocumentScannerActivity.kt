@@ -36,6 +36,10 @@ class DocumentScannerActivity : AppCompatActivity() {
     /**
      * @property maxNumDocuments maximum number of documents a user can scan at a time
      */
+    private var minNumDocuments = DefaultSetting.MIN_NUM_DOCUMENTS
+    /**
+     * @property maxNumDocuments maximum number of documents a user can scan at a time
+     */
     private var maxNumDocuments = DefaultSetting.MAX_NUM_DOCUMENTS
 
     /**
@@ -84,6 +88,15 @@ class DocumentScannerActivity : AppCompatActivity() {
                 newPhotoButton.visibility = View.INVISIBLE
             }
 
+            if (documents.size < minNumDocuments - 1) {
+                val completeDocumentScanButton: ImageButton = findViewById(R.id.complete_document_scan_button)
+                completeDocumentScanButton.isClickable = false
+                completeDocumentScanButton.visibility = View.INVISIBLE
+            }else{
+                val completeDocumentScanButton: ImageButton = findViewById(R.id.complete_document_scan_button)
+                completeDocumentScanButton.isClickable = true
+                completeDocumentScanButton.visibility = View.VISIBLE
+            }
             // get bitmap from photo file path
             val photo: Bitmap = ImageUtil().getImageFromFilePath(originalPhotoPath)
 
@@ -186,6 +199,16 @@ class DocumentScannerActivity : AppCompatActivity() {
                 }
                 userSpecifiedMaxImages = it as Int
                 maxNumDocuments = userSpecifiedMaxImages as Int
+            }
+
+
+            intent.extras?.get(DocumentScannerExtra.EXTRA_MIN_NUM_DOCUMENTS)?.let {
+                if (it.toString().toIntOrNull() == null) {
+                    throw Exception(
+                        "${DocumentScannerExtra.EXTRA_MIN_NUM_DOCUMENTS} must be a positive number"
+                    )
+                }
+                minNumDocuments = it as Int
             }
 
             // validate letUserAdjustCrop option, and update default if user sets it

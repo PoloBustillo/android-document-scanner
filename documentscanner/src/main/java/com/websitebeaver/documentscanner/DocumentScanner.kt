@@ -34,6 +34,7 @@ class DocumentScanner(
     private var responseType: String? = null,
     private var letUserAdjustCrop: Boolean? = null,
     private var maxNumDocuments: Int? = null,
+    private var minNumDocuments: Int? = null,
     private var croppedImageQuality: Int? = null
 ) {
     init {
@@ -57,6 +58,10 @@ class DocumentScanner(
         documentScanIntent.putExtra(
             DocumentScannerExtra.EXTRA_MAX_NUM_DOCUMENTS,
             maxNumDocuments
+        )
+        documentScanIntent.putExtra(
+            DocumentScannerExtra.EXTRA_MIN_NUM_DOCUMENTS,
+            minNumDocuments
         )
 
         return documentScanIntent
