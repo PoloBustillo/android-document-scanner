@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.websitebeaver.documentscanner">
+    package="io.polobustillo.documentscanner">
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -17,7 +17,7 @@
             android:theme="@style/Theme.FullScreen" />
 
         <provider
-            android:name="com.websitebeaver.documentscanner.DocumentScannerFileProvider"
+            android:name="io.polobustillo.documentscanner.DocumentScannerFileProvider"
             android:authorities="${applicationId}.DocumentScannerFileProvider"
             android:exported="false"
             android:grantUriPermissions="true">

@@ -1,12 +1,12 @@
-package com.websitebeaver.documentscanner.demo
+package io.polobustillo.documentscanner.demo
 
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import com.websitebeaver.documentscanner.DocumentScanner
-import com.websitebeaver.documentscanner.constants.ResponseType
-import com.websitebeaver.documentscanner.utils.ImageUtil
+import io.polobustillo.documentscanner.DocumentScanner
+import io.polobustillo.documentscanner.constants.ResponseType
+import io.polobustillo.documentscanner.utils.ImageUtil
 
 /**
  * A demo showing how to use the document scanner

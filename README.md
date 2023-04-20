@@ -10,7 +10,7 @@ apps that let users scan notes, homework, business cards, receipts, or anything 
 Open `build.gradle` and add this to `dependencies`
 
 ```bash
-implementation 'com.websitebeaver:documentscanner:1.3.4'
+implementation 'io.polobustillo.:documentscanner:1.3.4-alpha'
 ```
 
 ## Examples
@@ -25,12 +25,12 @@ implementation 'com.websitebeaver:documentscanner:1.3.4'
 ```kotlin
 package com.your.project
 
-import com.websitebeaver.documentscanner.utils.ImageUtil
+import io.polobustillo.documentscanner.utils.ImageUtil
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import com.websitebeaver.documentscanner.DocumentScanner
+import io.polobustillo.documentscanner.DocumentScanner
 
 class MainActivity : AppCompatActivity() {
     private lateinit var croppedImageView: ImageView
@@ -90,13 +90,13 @@ maxNumDocuments to 2.
 ```kotlin
 package com.your.project
 
-import com.websitebeaver.documentscanner.utils.ImageUtil
+import io.polobustillo.documentscanner.utils.ImageUtil
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import com.websitebeaver.documentscanner.DocumentScanner
-import com.websitebeaver.documentscanner.constants.ResponseType
+import io.polobustillo.documentscanner.DocumentScanner
+import io.polobustillo.documentscanner.constants.ResponseType
 
 class MainActivity : AppCompatActivity() {
     private lateinit var croppedImageView: ImageView
@@ -150,13 +150,13 @@ the max number of scans to 1.
 ```kotlin
 package com.your.project
 
-import com.websitebeaver.documentscanner.utils.ImageUtil
+import io.polobustillo.documentscanner.utils.ImageUtil
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import com.websitebeaver.documentscanner.DocumentScanner
-import com.websitebeaver.documentscanner.constants.ResponseType
+import io.polobustillo.documentscanner.DocumentScanner
+import io.polobustillo.documentscanner.constants.ResponseType
 
 class MainActivity : AppCompatActivity() {
     private lateinit var croppedImageView: ImageView
@@ -207,12 +207,12 @@ this library with Java.
 ```java
 package com.your.project;
 
-import com.websitebeaver.documentscanner.utils.ImageUtil;
+import io.polobustillo.documentscanner.utils.ImageUtil;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
-import com.websitebeaver.documentscanner.DocumentScanner;
+import io.polobustillo.documentscanner.DocumentScanner;
 
 public class MainActivity extends AppCompatActivity {
 
