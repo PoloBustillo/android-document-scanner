@@ -10,7 +10,7 @@ apps that let users scan notes, homework, business cards, receipts, or anything 
 Open `build.gradle` and add this to `dependencies`
 
 ```bash
-implementation 'io.polobustillo.:documentscanner:1.3.4-alpha'
+implementation 'io.polobustillo.:documentscanner:1.4.4-alpha'
 ```
 
 ## Examples

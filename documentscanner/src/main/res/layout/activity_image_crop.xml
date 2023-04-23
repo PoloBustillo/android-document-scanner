@@ -1,85 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:background="@color/black"
-    android:paddingVertical="@dimen/image_crop_view_vertical_padding"
     tools:context=".DocumentScannerActivity">
 
     <io.polobustillo.documentscanner.ui.ImageCropView
         android:id="@+id/image_view"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/image_crop_view_initial_height"
+        android:layout_height="550dp"
         android:contentDescription="@string/image_with_cropper" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_below="@+id/image_view"
         android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:baselineAligned="false"
+        android:weightSum="3"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingHorizontal="@dimen/buttons_container_horizontal_padding"
-        android:paddingBottom="@dimen/buttons_container_bottom_padding">
+        android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+        <io.polobustillo.documentscanner.ui.CircleButton
+            android:layout_marginTop="20dp"
+            android:id="@+id/retake_photo_button"
+            android:layout_width="@dimen/small_button_diameter"
+            android:layout_height="@dimen/small_button_diameter"
+            android:layout_gravity="center|top"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            android:stateListAnimator="@animator/button_grow_animation" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+        <TextView
+            android:id="@+id/label"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginTop="20dp"
+            android:gravity="top|center"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"/>
 
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <io.polobustillo.documentscanner.ui.CircleButton
-                android:id="@+id/retake_photo_button"
-                android:layout_width="@dimen/small_button_diameter"
-                android:layout_height="@dimen/small_button_diameter"
-                android:layout_gravity="center"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_baseline_arrow_back_24"
-                android:stateListAnimator="@animator/button_grow_animation" />
-
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="169dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            >
-
-            <TextView
-                android:id="@+id/label"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:textColor="#FFFFFF"
-                android:textSize="24sp"></TextView>
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <io.polobustillo.documentscanner.ui.CircleButton
-                android:id="@+id/new_photo_button"
-                android:layout_width="@dimen/small_button_diameter"
-                android:layout_height="@dimen/small_button_diameter"
-                android:layout_gravity="center"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_baseline_add_24"
-                android:stateListAnimator="@animator/button_grow_animation" />
-
-            <io.polobustillo.documentscanner.ui.DoneButton
-                android:id="@+id/complete_document_scan_button"
-                android:layout_width="@dimen/large_button_diameter"
-                android:layout_height="@dimen/large_button_diameter"
-                android:layout_gravity="center"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_baseline_check_24"
-                android:stateListAnimator="@animator/button_grow_animation" />
-
-        </FrameLayout>
-
+        <io.polobustillo.documentscanner.ui.DoneButton
+            android:id="@+id/complete_document_scan_button"
+            android:layout_width="@dimen/large_button_diameter"
+            android:layout_height="@dimen/large_button_diameter"
+            android:layout_gravity="bottom|center"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_baseline_check_24"
+            android:stateListAnimator="@animator/button_grow_animation" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+        <io.polobustillo.documentscanner.ui.CircleButton
+            android:layout_marginTop="20dp"
+            android:id="@+id/new_photo_button"
+            android:layout_width="@dimen/small_button_diameter"
+            android:layout_height="@dimen/small_button_diameter"
+            android:layout_gravity="center|top"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_baseline_add_24"
+            android:stateListAnimator="@animator/button_grow_animation" />
+    </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

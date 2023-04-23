@@ -52,7 +52,7 @@ publishing {
         release(MavenPublication) {
             groupId = "io.github.polobustillo"
             artifactId = "documentscanner"
-            version = "1.3.4-alpha"
+            version = "1.4.5-alpha"
 
             afterEvaluate {
                 from components.release
@@ -96,10 +96,7 @@ publishing {
             def snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
             url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
 
-            credentials {
-                username findProperty("ossrhUsername")
-                password findProperty("ossrhPassword")
-            }
+
         }
     }
 }

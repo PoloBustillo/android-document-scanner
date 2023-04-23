@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         {
             // user canceled document scan
             Log.v("documentscannerlogs", "User canceled document scan")
-        }, ResponseType.IMAGE_FILE_PATH, true,2, 2, 100, arrayListOf<String>("FRENTE DEL INE MUCHO TEXTO TEJAJSDAJSD","ATRAS")
+        }, ResponseType.IMAGE_FILE_PATH, true,2, 2, 100, arrayListOf<String>("FRENTE DEL INE MUCHO TEXTO TEJAJSDAJSD","asdasdasdasASKDSAKDKASD ASD ASDLAS")
     )
 
     /**
