@@ -23,7 +23,9 @@ import java.io.File
  * @param responseType the cropped image gets returned in this format
  * @param letUserAdjustCrop whether or not the user can change the auto detected document corners
  * @param maxNumDocuments the maximum number of documents a user can scan at once
+ * @param minNumDocuments the minimum number of documents a user can scan at once
  * @param croppedImageQuality the 0 - 100 quality of the cropped image
+ * @param labelStrings description strings for images
  * @constructor creates document scanner
  */
 class DocumentScanner(
@@ -35,7 +37,8 @@ class DocumentScanner(
     private var letUserAdjustCrop: Boolean? = null,
     private var maxNumDocuments: Int? = null,
     private var minNumDocuments: Int? = null,
-    private var croppedImageQuality: Int? = null
+    private var croppedImageQuality: Int? = null,
+    private var labelsDocuments: ArrayList<String>? = null
 ) {
     init {
         responseType = responseType ?: DefaultSetting.RESPONSE_TYPE
@@ -63,7 +66,10 @@ class DocumentScanner(
             DocumentScannerExtra.EXTRA_MIN_NUM_DOCUMENTS,
             minNumDocuments
         )
-
+        documentScanIntent.putStringArrayListExtra(
+            DocumentScannerExtra.EXTRA_LABELS_DOCUMENTS,
+            labelsDocuments
+        )
         return documentScanIntent
     }
 

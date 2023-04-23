@@ -5,8 +5,10 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import io.polobustillo.documentscanner.R
 import io.polobustillo.documentscanner.constants.DefaultSetting
@@ -35,7 +37,7 @@ import org.opencv.core.Point
  */
 class DocumentScannerActivity : AppCompatActivity() {
     /**
-     * @property maxNumDocuments maximum number of documents a user can scan at a time
+     * @property minNumDocuments minimum number of documents a user can scan at a time
      */
     private var minNumDocuments = DefaultSetting.MIN_NUM_DOCUMENTS
     /**
@@ -52,7 +54,10 @@ class DocumentScannerActivity : AppCompatActivity() {
      * @property croppedImageQuality the 0 - 100 quality of the cropped image
      */
     private var croppedImageQuality = DefaultSetting.CROPPED_IMAGE_QUALITY
-
+    /**
+     * @property labelsDocuments text to be added to crop view as decription.
+     */
+    private var labelsDocuments = DefaultSetting.LABELS_DOCUMENTS
     /**
      * @property cropperOffsetWhenCornersNotFound if we can't find document corners, we set
      * corners to image size with a slight margin
@@ -79,8 +84,13 @@ class DocumentScannerActivity : AppCompatActivity() {
         this,
         onPhotoCaptureSuccess = {
             // user takes photo
-            originalPhotoPath ->
+            originalPhotoPath,pageNumber ->
 
+            Log.i("onPhotoCaptureSuccess","$pageNumber  $labelsDocuments")
+            if(labelsDocuments.isNotEmpty()){
+                val labelInfo: TextView = findViewById(R.id.label)
+                labelInfo.text=labelsDocuments[pageNumber]
+            }
             // if maxNumDocuments is 3 and this is the 3rd photo, hide the new photo button since
             // we reach the allowed limit
             if (documents.size == maxNumDocuments - 1) {
@@ -234,6 +244,14 @@ class DocumentScannerActivity : AppCompatActivity() {
                 }
             }
 
+
+            intent.extras?.getStringArrayList(DocumentScannerExtra.EXTRA_LABELS_DOCUMENTS)?.let {
+                if(it!=null && it.size != maxNumDocuments)
+                    throw Exception(
+                        "${DocumentScannerExtra.EXTRA_LABELS_DOCUMENTS} size must be equal to maxNumDocuments"
+                    )
+                labelsDocuments = it
+            }
             // validate croppedImageQuality option, and update value if user sets it
             intent.extras?.get(DocumentScannerExtra.EXTRA_CROPPED_IMAGE_QUALITY)?.let {
                 if (it !is Int || it < 0 || it > 100) {

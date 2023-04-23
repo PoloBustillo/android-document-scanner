@@ -4,10 +4,12 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.provider.MediaStore
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
+import io.polobustillo.documentscanner.constants.DocumentScannerExtra
 import java.io.File
 import java.io.IOException
 
@@ -21,13 +23,18 @@ import java.io.IOException
  */
 class CameraUtil(
     private val activity: ComponentActivity,
-    private val onPhotoCaptureSuccess: (photoFilePath: String) -> Unit,
+    private val onPhotoCaptureSuccess: (photoFilePath: String, pageNumber: Int) -> Unit,
     private val onCancelPhoto: () -> Unit
 ) {
     /**
      * @property photoFilePath the photo file path
      */
     private lateinit var photoFilePath: String
+    /**
+     * @property photoFilePath the photo file path
+     */
+    private var pageNumber: Int = 0
+
 
     /**
      * @property startForResult used to launch camera
@@ -38,7 +45,7 @@ class CameraUtil(
         when (result.resultCode) {
             Activity.RESULT_OK -> {
                 // send back photo file path on capture success
-                onPhotoCaptureSuccess(photoFilePath)
+                onPhotoCaptureSuccess(photoFilePath, pageNumber)
             }
             Activity.RESULT_CANCELED -> {
                 // delete the photo since the user didn't finish taking the photo
@@ -55,6 +62,7 @@ class CameraUtil(
      */
     @Throws(IOException::class)
     fun openCamera(pageNumber: Int) {
+        this.pageNumber = pageNumber
         // create intent to launch camera
         val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
 
@@ -70,6 +78,7 @@ class CameraUtil(
             "${activity.packageName}.DocumentScannerFileProvider",
             photoFile
         )
+
         takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
 
         // open camera

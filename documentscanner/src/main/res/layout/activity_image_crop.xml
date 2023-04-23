@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,21 +14,20 @@
         android:contentDescription="@string/image_with_cropper" />
 
     <LinearLayout
-        android:paddingHorizontal="@dimen/buttons_container_horizontal_padding"
-        android:paddingBottom="@dimen/buttons_container_bottom_padding"
-        android:baselineAligned="false"
-        android:layout_below="@+id/image_view"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/image_view"
+        android:layout_alignParentBottom="true"
+        android:baselineAligned="false"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/buttons_container_horizontal_padding"
+        android:paddingBottom="@dimen/buttons_container_bottom_padding">
 
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:rotationY="37">
+            android:layout_weight="1">
 
             <io.polobustillo.documentscanner.ui.CircleButton
                 android:id="@+id/retake_photo_button"
@@ -43,17 +41,24 @@
         </FrameLayout>
 
         <FrameLayout
-            android:layout_width="wrap_content"
+            android:layout_width="169dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            >
 
+            <TextView
+                android:id="@+id/label"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"></TextView>
         </FrameLayout>
 
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:rotationY="-29">
+            android:layout_weight="1">
 
             <io.polobustillo.documentscanner.ui.CircleButton
                 android:id="@+id/new_photo_button"

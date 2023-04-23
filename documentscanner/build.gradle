@@ -105,8 +105,7 @@ publishing {
 }
 
 signing {
-    def signingKey = findProperty("privatekey")
-    def signingPassword = findProperty("password")
+
     useInMemoryPgpKeys(signingKey, signingPassword)
     sign publishing.publications.release
 }
